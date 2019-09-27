@@ -32,6 +32,14 @@ const vendorSchema = new Schema({
     trim: true,
     required: true
   },
+  amount: {
+    type: Number,
+    required: true
+  },
+  paid: {
+    type: Boolean,
+    required: true
+  },
   created_at: {
     type: Date,
     required: true,

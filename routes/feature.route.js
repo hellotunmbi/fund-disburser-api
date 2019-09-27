@@ -5,11 +5,6 @@ require("dotenv").config({ path: "variables.env" });
 
 const featureController = require("../controllers/feature.controller");
 
-// Test URL
-router.get("/", (req, res) => {
-  res.send("Welcome to Feature Route");
-});
-
 // CREATE A NEW FEATURE...
 router.post("/", featureController.createFeature);
 

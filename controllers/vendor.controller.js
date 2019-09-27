@@ -1,9 +1,24 @@
 const Vendor = require("../models/Vendor");
+const randomstring = require("randomstring");
 
 exports.addVendor = async function(req, res) {
-  const { customer_name, business_name, acct_name, acct_no, bank } = req.body;
+  const {
+    customer_name,
+    business_name,
+    amount,
+    acct_name,
+    acct_no,
+    bank
+  } = req.body;
 
-  if (!customer_name && !business_name && !acct_name && !acct_no && !bank) {
+  if (
+    !customer_name &&
+    !business_name &&
+    !acct_name &&
+    !amount &&
+    !acct_no &&
+    !bank
+  ) {
     res.json({
       status: 400,
       data: {
@@ -15,10 +30,12 @@ exports.addVendor = async function(req, res) {
   const vendor = Vendor({
     customer_name,
     business_name,
+    amount,
     acct_name,
     acct_no,
     bank,
-    status: "active"
+    status: "active",
+    paid: false
   });
 
   await vendor.save(function(err) {
